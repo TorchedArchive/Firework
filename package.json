@@ -1,0 +1,35 @@
+{
+  "name": "@luvella/discordia",
+  "version": "1.0.0",
+  "description": "An extended Eris client for ease of use.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luvella/Discordia.git"
+  },
+  "keywords": [
+    "eris",
+    "discord-bot",
+    "discord"
+  ],
+  "author": "Luvella",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Luvella/Discordia/issues"
+  },
+  "homepage": "https://github.com/Luvella/Discordia#readme",
+  "dependencies": {
+    "eris": "^0.13.3",
+    "loggaby": "^1.0.1"
+  },
+  "devDependencies": {
+    "@luvella/eslint-config": "^1.0.2",
+    "eslint": "^7.5.0"
+  },
+  "peerDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
