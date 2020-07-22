@@ -1,0 +1,27 @@
+{
+  "name": "discordia-example",
+  "version": "1.0.0",
+  "description": "An example bot for Discordia.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luvella/Discordia.git"
+  },
+  "keywords": [
+    "eris",
+    "discord-bot",
+    "discord"
+  ],
+  "author": "Luvella",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Luvella/Discordia/issues"
+  },
+  "homepage": "https://github.com/Luvella/Discordia#readme",
+  "dependencies": {
+    "@luvella/discordia": "^1.0.0"
+  }
+}
