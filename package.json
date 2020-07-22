@@ -1,10 +1,10 @@
 {
   "name": "@luvella/discordia",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "An extended Eris client for ease of use.",
   "main": "index.js",
   "scripts": {
-    "test": "node test/index.js"
+    "test": "exit 1"
   },
   "repository": {
     "type": "git",
