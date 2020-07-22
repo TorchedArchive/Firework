@@ -7,7 +7,7 @@ class DiscordiaLog extends Loggaby {
 	}
 
 	shard(msg, id = 0, color = !this.options.color, logfunc = this.options.logFunction || console.log) {
-		logfunc(color ? this._print(msg, 'blue', `Shard ${0}`) : `${this._time} Shard ${id} > ${msg}`);
+		logfunc(color ? this._print(msg, 'blue', `Shard ${id}`) : `${this._time} Shard ${id} > ${msg}`);
 	};
 }
 
