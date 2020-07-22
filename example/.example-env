@@ -1,0 +1,3 @@
+# To use this file, remove 'example-' from the name and set 'env: true' in your client options.
+# That requires you install the dotenv package, or you can put the token in config.json normally.
+TOKEN='some.token.here'
