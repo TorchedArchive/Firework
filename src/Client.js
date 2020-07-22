@@ -61,7 +61,7 @@ class DiscordiaClient extends Eris.Client {
 			content.embed = content.embed || {};
 			if (content.embed.generic) Object.assign(content.embed, this._options.genericEmbed);
 		}
-		return this.requestHandler.request('PATCH', `/channels/${channelID}/messages/${messageID}`, true, content).then((message) => new ErMessage(message, this));
+		return this.requestHandler.request('PATCH', `/channels/${channelID}/messages/${messageID}`, true, content).then((message) => new Eris.Message(message, this));
 	}
 
 	setGenericEmbed(embed) {
