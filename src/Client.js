@@ -34,10 +34,10 @@ class DiscordiaClient extends Eris.Client {
 
 	createMessage(channelID, content, file) {
 		if (content || content === null) {
-			if (typeof content !== 'object' || content === null) {
-				content = {content: `${content}`};
+			if (typeof content !== 'object' || content === null) 
+				content = {content: `${content}`}
 			else if ((content.content || content.content === null) && typeof content.content !== 'string')
-				content.content = `${content.content}`;
+				content.content = `${content.content}`
 			else if ((content.content || content.content === null) && !content.embed && !file)
 				return Promise.reject(new Error('No content, file, or embed'));
 			content.allowed_mentions = this._formatAllowedMentions(content.allowedMentions); // eslint-disable camelcase
@@ -52,10 +52,10 @@ class DiscordiaClient extends Eris.Client {
 	editMessage(channelID, messageID, content) {
 		if(content || content === null) {
 			if (typeof content !== 'object' || content === null) 
-				content = {content: `${content}`};
+				content = {content: `${content}`}
 			else if ((content.content || content.content === null) && typeof content.content !== 'string') 
-				content.content = `${content.content}`;
-			else if ((content.content || content.content === null) && !content.embed && (content.flags || content.flags === null)) {
+				content.content = `${content.content}`
+			else if ((content.content || content.content === null) && !content.embed && (content.flags || content.flags === null)) 
 				return Promise.reject(new Error('No content, embed or flags'));
 			content.allowed_mentions = this._formatAllowedMentions(content.allowedMentions); // eslint-disable camelcase
 			content.embed = content.embed || {};
