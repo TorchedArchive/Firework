@@ -54,6 +54,13 @@ bot.on('messageCreate', (msg) => {
 				msg.channel.createMessage({embed: {generic: true, description: 'Hi, this is a WIP command as you can tell.'} });
 				break;
 
+			case 'info':
+				msg.channel.createMessage({content: `This is the example bot for \`Discordia\`, located at https://github.com/Luvella/Discordia which is based on Eris.\nBelow are some stats.`, embed: {
+					generic: true, 
+					color: 0x47aef0,
+					description: `⚒️ Library: Discordia v\`${Discordia.version}\` & Eris v\`${Discordia.erisVersion}\`
+					🏘️ Guilds: ${bot.guilds.size}`
+				}})
 			// No default
 		}
 	} catch (err) {
