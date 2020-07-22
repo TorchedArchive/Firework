@@ -4,6 +4,10 @@ const bot = new Discordia.Client(require('./config.json'), {env: true, clientVal
 bot.on('ready', () => {
 	bot.setGenericEmbed({
 		color: 0x38B1D0,
+		author: {
+			icon_url: bot.user.avatarURL,
+			name: bot.user.username
+		},
 		footer: {text: `Version ${bot.version}`},
 		timestamp: new Date()
 	});
@@ -15,7 +19,7 @@ bot.on('messageCreate', (msg) => {
 	if (msg.channel.type === 'dm') return;
 
 	const mssg = msg.content.toLowerCase() || msg.content.toUpperCase();
-	const prefixes = [`<@!${bot.user.id}>`, `<@${bot.user.id}>`, 'bot ', 'v, '];
+	const prefixes = [/* `<@!${bot.user.id}> `, `<@${bot.user.id}>`, */'http.cat ', 'cat '];
 	let prefix = false;
 	for (const pref of prefixes) if (mssg.startsWith(pref)) prefix = pref;
 
@@ -54,13 +58,14 @@ bot.on('messageCreate', (msg) => {
 				msg.channel.createMessage({embed: {generic: true, description: 'Hi, this is a WIP command as you can tell.'} });
 				break;
 
-			case 'info':
-				msg.channel.createMessage({content: `This is the example bot for \`Discordia\`, located at https://github.com/Luvella/Discordia which is based on Eris.\nBelow are some stats.`, embed: {
+			case 'stats':
+				msg.channel.createMessage({embed: {
 					generic: true, 
 					color: 0x47aef0,
-					description: `⚒️ Library: Discordia v\`${Discordia.version}\` & Eris v\`${Discordia.erisVersion}\`
+					description: `⚒️ Library: [Discordia \`${Discordia.version}\`](https://github.com/Luvella/Discordia) Eris \`${Discordia.erisVersion}\`
 					🏘️ Guilds: ${bot.guilds.size}`
 				}})
+
 			// No default
 		}
 	} catch (err) {
