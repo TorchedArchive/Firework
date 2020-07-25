@@ -4,6 +4,8 @@ const Eris = require('eris');
 const Collection = require('./Collection');
 const Log = require('./Log');
 const utils = require('./Utils');
+const fs = require('fs');
+const path = require('path').posix;
 
 class DiscordiaClient extends Eris.Client {
 	constructor(config, options = {}) {
@@ -26,7 +28,7 @@ class DiscordiaClient extends Eris.Client {
 			clientValues: {}
 		}, options);
 		this.commands = new Collection();
-		this.aliases = new Collection();
+		this.commands.aliases = new Collection();
 		this.logger = new Log(this._options.loggaby);
 
 		if (Array.isArray(this._options.clientValues) || typeof this._options.clientValues !== 'object' && this._options.clientValues !== null) throw new TypeError('When specifying "clientValues" it should be an object');
@@ -63,6 +65,31 @@ class DiscordiaClient extends Eris.Client {
 			if (content.embed.generic) Object.assign(content.embed, this._options.genericEmbed);
 		}
 		return this.requestHandler.request('PATCH', `/channels/${channelID}/messages/${messageID}`, true, content).then((message) => new Eris.Message(message, this));
+	}
+
+	initCommands(dir) {
+		if (!fs.existsSync(dir)) throw new Error(`Could not find directory "${dir}" to load commands from`);
+		const categories = fs.readdirSync(dir, {withFileTypes: true}).filter(f => f.isDirectory());
+
+		for (const c of categories) {
+			const commands = fs.readdirSync(path.join(dir, c.name), {withFileTypes: true}).filter(f => !f.isDirectory() && f.name.split('.').pop() === 'js').map(f => f.name.slice(0, -3));
+			if (commands.length === 0) return this.logger.commands(`None found for category "${c.name}"`);
+
+			let loaded = 0;
+			for (const cmd of commands) {
+				try {
+					const props = new (require(path.join(dir, c.name, `${cmd}.js`)))(this);
+					props.settings.category = c.name;
+					this.commands.set(props.settings.name, props);
+					for (const a of props.settings.aliases) this.commands.aliases.set(a, props.settings.name);
+					this.logger.commands(`${cmd} loaded successfully`);
+					loaded++;
+				} catch (err) {
+					this.logger.error(err.message);
+				}
+			}
+			this.logger.commands(`Loaded ${loaded}/${commands.length} commands in the ${c.name} category`);
+		}
 	}
 
 	overrideGenericEmbed(embed) {
