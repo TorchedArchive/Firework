@@ -1,6 +1,6 @@
 {
   "name": "discordia-example",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An example bot for Discordia.",
   "main": "index.js",
   "scripts": {
@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/Luvella/Discordia/blob/master/example#readme",
   "dependencies": {
-    "@luvella/discordia": "^1.2.1"
+    "@luvella/discordia": "^1.3.1"
   }
 }

@@ -5,9 +5,19 @@ const bot = new Discordia.Client(require('./config.json'), {
 		color: 0x38B1D0,
 		timestamp: new Date()
 	},
-	clientValues: {version: require('./package.json').version}
+	clientValues: {
+		version: require('./package.json').version,
+		dev: '439373663905513473' // Feel free to change this to your user id :)
+	},
+	disabledEvents: {
+		PRESENCE_UPDATE: true,
+		VOICE_STATE_UPDATE: true,
+		GUILD_MEMBER_UPDATE: true,
+	},
+	messageLimit: 5
 });
 
+bot.initCommands(`${__dirname}/src/commands`);
 bot.on('ready', () => {
 	bot.addGenericValues({
 		author: {
@@ -24,7 +34,7 @@ bot.on('messageCreate', (msg) => {
 	if (msg.channel.type === 'dm') return;
 
 	const mssg = msg.content.toLowerCase() || msg.content.toUpperCase();
-	const prefixes = [`<@!${bot.user.id}> `, `<@${bot.user.id}>`, 'bot ', 'b^'];
+	const prefixes = [/*`<@!${bot.user.id}> `, `<@${bot.user.id}>`,*/ 'bot ', 'b^'];
 	let prefix = false;
 	for (const pref of prefixes) if (mssg.startsWith(pref)) prefix = pref;
 
@@ -34,36 +44,18 @@ bot.on('messageCreate', (msg) => {
 	const args = msg.content.slice(prefix.length).trim().split(' ');
 	const command = args.shift().toLowerCase();
 	try {
-		switch (command) {
-			case 'ping':
-				msg.channel.createMessage('Pong...?').then(m => {
-					m.edit({
-						content: '',
-						embed: {
-							generic: true,
-							color: 0x47aef0,
-							description: `📬 Latency: \`${bot.shards.get(0).latency}ms\``
-						}
-					});
-				});
-				break;
+		if (!bot.commands.has(command)) return;
+		const cmd = bot.commands.get(command) || bot.commands.get(bot.commands.aliases.get(command));
 
-			case 'embed':
-				msg.channel.createMessage({embed: {generic: true, description: 'hi lul'} });
-				break;
-
-			case 'stats':
-				msg.channel.createMessage({
-					embed: {
-						generic: true, 
-						color: 0x47aef0,
-						description: `⚒️ Library: [Discordia \`${Discordia.version}\`](https://github.com/Luvella/Discordia) Eris \`${Discordia.erisVersion}\`
-						🏘️ Guilds: ${bot.guilds.size}`
-					}
-				});
-
-			// No default
+		if (cmd.settings.devOnly && msg.author.id !== bot.dev || cmd.settings.category === 'Developer' && msg.author.id !== bot.dev) {
+			return msg.channel.createMessage({
+				embed: {
+					generic: true,
+					description: 'As this is a developer only command, you are not allowed to run it.'
+				}
+			});
 		}
+		cmd.run(msg, args, prefix);
 	} catch (err) {
 		bot.logger.error(err);
 	}
