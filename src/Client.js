@@ -24,7 +24,7 @@ class DiscordiaClient extends Eris.Client {
 
 		this.config = config;
 		this._options = Object.assign({
-			genericEmbed: {},
+			templateEmbed: {},
 			clientValues: {}
 		}, options);
 		this.commands = new Collection();
@@ -35,9 +35,9 @@ class DiscordiaClient extends Eris.Client {
 		for (const key in this._options.clientValues) this[key] = this._options.clientValues[key];
 	}
 	
-	addGenericValues(embed) {
-		if (Array.isArray(embed) || typeof embed !== 'object' && embed !== null) throw new TypeError('genericEmbed has to be an object');
-		return this._options.genericEmbed = utils.objDeepMerge(this._options.genericEmbed, embed);
+	addTemplateValues(embed) {
+		if (Array.isArray(embed) || typeof embed !== 'object' && embed !== null) throw new TypeError('templateEmbed has to be an object');
+		return this._options.templateEmbed = utils.objDeepMerge(this._options.templateEmbed, embed);
 	}
 
 	createMessage(channelID, content, file) {
@@ -48,7 +48,7 @@ class DiscordiaClient extends Eris.Client {
 			
 			content['allowed_mentions'] = this._formatAllowedMentions(content.allowedMentions); // eslint-disable camelcase
 			content.embed = content.embed || {};
-			if (content.embed.generic) Object.assign(content.embed, this._options.genericEmbed);
+			if (content.embed.template) Object.assign(content.embed, this._options.templateEmbed);
 		} else if (!file) {
 			return Promise.reject(new Error('No content, file, or embed'));
 		}
@@ -62,7 +62,7 @@ class DiscordiaClient extends Eris.Client {
 			else if ((content.content || content.content === null) && !content.embed && (content.flags || content.flags === null)) content['allowed_mentions'] = this._formatAllowedMentions(content.allowedMentions);
 			
 			content.embed = content.embed || {};
-			if (content.embed.generic) Object.assign(content.embed, this._options.genericEmbed);
+			if (content.embed.template) Object.assign(content.embed, this._options.templateEmbed);
 		}
 		return this.requestHandler.request('PATCH', `/channels/${channelID}/messages/${messageID}`, true, content).then((message) => new Eris.Message(message, this));
 	}
@@ -92,9 +92,9 @@ class DiscordiaClient extends Eris.Client {
 		}
 	}
 
-	overrideGenericEmbed(embed) {
-		if (Array.isArray(embed) || typeof embed !== 'object' && embed !== null) throw new TypeError('genericEmbed has to be an object');
-		return this._options.genericEmbed = embed;
+	overrideTemplateEmbed(embed) {
+		if (Array.isArray(embed) || typeof embed !== 'object' && embed !== null) throw new TypeError('templateEmbed has to be an object');
+		return this._options.templateEmbed = embed;
 	}
 
 };
