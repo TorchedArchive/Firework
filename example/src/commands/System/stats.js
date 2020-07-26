@@ -8,7 +8,7 @@ class StatsCommand extends Discordia.Command {
 	run(msg) {
 		msg.channel.createMessage({
 			embed: {
-				generic: true, 
+				template: true, 
 				description: `⚒️ Library: [Discordia \`${Discordia.version}\`](https://github.com/Luvella/Discordia) Eris \`${Discordia.erisVersion}\`
 				🏘️ Guilds: ${this.bot.guilds.size}`
 			}

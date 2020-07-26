@@ -16,7 +16,7 @@ class EvalCommand extends Discordia.Command {
 			} else {
 				msg.channel.createMessage({
 					embed: {
-						generic: true,
+						template: true,
 						description: `\`\`\`js\n${this.clean(evaled)}\n\`\`\``
 					}
 				});
@@ -24,7 +24,7 @@ class EvalCommand extends Discordia.Command {
 		} catch (err) {
 			msg.channel.createMessage({
 				embed: {
-					generic: true,
+					template: true,
 					description: `\`\`\`js\n${this.clean(err.stack)}\n\`\`\``
 				}
 			});
@@ -32,8 +32,8 @@ class EvalCommand extends Discordia.Command {
 	}
 
 	clean(text) {
-		if (typeof(text) === "string") return text.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203));
-		else return text;
+		if (typeof(text) === "string") return text.replace(/`/g, `\`${String.fromCharCode(8203)}`).replace(/@/g, `@${String.fromCharCode(8203)}`);
+		return text;
 	}
 }
 

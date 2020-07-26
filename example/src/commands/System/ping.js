@@ -11,7 +11,7 @@ class PingCommand extends Discordia.Command {
 			m.edit({
 				content: '',
 				embed: {
-					generic: true,
+					template: true,
 					description: `❤️ Websocket: \`${this.bot.shards.get(0).latency}ms\`
 					📬 Message: \`${Date.now() - start}ms\``
 				}
