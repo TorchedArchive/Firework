@@ -6,6 +6,7 @@
   "scripts": {
     "test": "exit 1"
   },
+  "files": ["index.js", "src/"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Luvella/Discordia.git"
