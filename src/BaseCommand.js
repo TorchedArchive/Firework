@@ -4,10 +4,10 @@ const Logger = require('./Log');
 
 class DiscordiaCommand {
 	constructor(bot, opts) {
-		if (!opts.name) throw new Error('A name is required for a command');
-		if (typeof opts.name !== 'string') throw new Error('Command name should be a string');
-		if (opts.aliases && !Array.isArray(opts.aliases)) new Logger().warn('aliases should be an array of strings');
-		if (opts.examples && !Array.isArray(opts.examples)) new Logger().warn('examples should be an array of strings');
+		if (!opts.name) throw new Error('A name is required for a command.');
+		if (typeof opts.name !== 'string') throw new Error('The command\'s name should be a string.');
+		if (opts.aliases && !Array.isArray(opts.aliases)) new Logger().warn('Aliases should be an array of strings.');
+		if (opts.examples && !Array.isArray(opts.examples)) new Logger().warn('Examples should be an array of strings.');
 
 		this.bot = bot;
 		this.settings = {
@@ -22,7 +22,7 @@ class DiscordiaCommand {
 	}
 
 	run() {
-		new Logger().commands(`${this.settings.name} command is running, using the default function.`)
+		new Logger().commands(`The **${this.settings.name}** command has not been implemented yet.`)
 	}
 }
 
