@@ -57,4 +57,6 @@ declare module '@luvella/firework' {
       export function objDeepMerge<T extends object, U = T>(...objs: T[]): U;
     }
   }
+
+  export = firework;
 }
