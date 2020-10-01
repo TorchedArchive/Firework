@@ -1,6 +1,6 @@
 declare module '@luvella/firework' {
   import * as loggaby from 'loggaby';
-  import Eris, * as eris from 'eris';
+  import * as eris from 'eris';
 
   /**
    * Entry-point of the framework
@@ -33,7 +33,7 @@ declare module '@luvella/firework' {
       public abstract run(): firework.MaybePromise<void>;
     }
 
-    export class Client extends Eris.Client {
+    export class Client extends eris.Client {
       constructor(config: object, options: firework.ClientOptions); // TODO: what is `config`?
 
       public commands: firework.Collection<firework.BaseCommand> & { aliases: firework.Collection<string> };
