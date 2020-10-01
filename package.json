@@ -3,6 +3,7 @@
   "version": "1.3.0",
   "description": "An extended Eris client for ease of use.",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "exit 1"
   },
