@@ -8,16 +8,19 @@
 </div>
 
 ## Table of Contents
-<!-- - [Install](#install) -->
+- [Install](#install)
 - [Example](#example)
 - [Docs](#documentation)
 - [License](#license) 
 
+### Install 
+`npm install @luvella/firework`
+
 ### Example
-TODOC
+[See here](example/) for an example bot.
 
 ### Documentation
-TODOC :|
+Soon at https://luvella.github.io/Firework
 
 ### License
 Firework is licensed under the MIT license.  
