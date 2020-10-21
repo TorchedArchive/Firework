@@ -1,15 +1,17 @@
 {
-  "name": "@luvella/discordia",
-  "version": "1.3.0",
-  "description": "An extended Eris client for ease of use.",
-  "main": "index.js",
+  "name": "@luvella/firework",
+  "version": "1.0.0",
+  "description": "🎆 Command framework and utilities for the Eris Discord library.",
+  "main": "lib/index.js",
   "scripts": {
     "test": "exit 1"
   },
-  "files": ["index.js", "src/"],
+  "files": [
+    "lib/"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Luvella/Discordia.git"
+    "url": "git+https://github.com/Luvella/Firework.git"
   },
   "keywords": [
     "eris",
@@ -19,16 +21,16 @@
   "author": "Luvella",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Luvella/Discordia/issues"
+    "url": "https://github.com/Luvella/Firework/issues"
   },
-  "homepage": "https://github.com/Luvella/Discordia#readme",
+  "homepage": "https://github.com/Luvella/Firework#readme",
   "dependencies": {
     "eris": "^0.13.3",
-    "loggaby": "^1.0.1"
+    "loggaby": "^3.0.1"
   },
   "devDependencies": {
-    "@luvella/eslint-config": "^1.0.2",
-    "eslint": "^7.5.0"
+    "@luvella/eslint-config": "^1.0.3",
+    "eslint": "^7.11.0"
   },
   "peerDependencies": {
     "dotenv": "^8.2.0"
