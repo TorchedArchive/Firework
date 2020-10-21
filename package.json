@@ -1,6 +1,6 @@
 {
   "name": "@luvella/firework",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "🎆 Command framework and utilities for the Eris Discord library.",
   "main": "lib/index.js",
   "scripts": {
