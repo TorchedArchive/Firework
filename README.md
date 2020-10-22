@@ -24,8 +24,6 @@ Or...
 const Firework = require('@luvella/firework');
 const bot = new Firework.Client('token');
 
-bot.loadEvents('./events');
-
 const ping = new Firework.Command(bot, {
 	name: 'ping',
 	aliases: ['pong']
