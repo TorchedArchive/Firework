@@ -10,17 +10,50 @@
 ## Table of Contents
 - [Install](#install)
 - [Example](#example)
-- [Docs](#documentation)
+- [Links](#links)
 - [License](#license) 
 
 ### Install 
 `npm install @luvella/firework`
 
 ### Example
-[See here](example/) for an example bot.
+[See here](example/) for an example bot.  
 
-### Documentation
-Soon at https://luvella.github.io/Firework
+Or...  
+```js
+const Firework = require('@luvella/firework');
+const bot = new Firework.Client('token');
+
+bot.loadEvents('./events');
+
+const ping = new Firework.Command(bot, {
+	name: 'ping',
+	aliases: ['pong']
+}).executor(function ({ msg, args }) => {
+	msg.channel.createMessage(`Ponged ${args[0]}!`);
+	// Think of `this.bot` as `bot`
+	this.bot.logger.debug('ponged');
+});
+bot.addCommand(ping);
+
+bot.on('messageCreate', (msg) => {
+	const prefix = '!';
+	if (!msg.content.startsWith(prefix)) return;
+
+	const args = msg.content.slice(prefix.length).trim().split(' ');
+	const command = args.shift().toLowerCase();
+
+	const cmd = bot.getCommand(command) // works with the name and aliases as well
+	if (!cmd) return;
+
+	cmd.run({ msg, args });
+})
+```
+
+### Links
+- Documentation: Soon at https://luvella.github.io/Firework
+- Alternative(s)
+  - [hibiscus](https://github.com/hibiscus-eris/hibiscus) for a higher level solution
 
 ### License
 Firework is licensed under the MIT license.  
