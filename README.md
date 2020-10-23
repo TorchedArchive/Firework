@@ -27,7 +27,7 @@ const bot = new Firework.Client('token');
 const ping = new Firework.Command(bot, {
 	name: 'ping',
 	aliases: ['pong']
-}).executor(function ({ msg, args }) => {
+}).executor(function ({ msg, args }) {
 	msg.channel.createMessage(`Ponged ${args[0]}!`);
 	// Think of `this.bot` as `bot`
 	this.bot.logger.debug('ponged');
@@ -41,7 +41,7 @@ bot.on('messageCreate', (msg) => {
 	const args = msg.content.slice(prefix.length).trim().split(' ');
 	const command = args.shift().toLowerCase();
 
-	const cmd = bot.getCommand(command) // works with the name and aliases as well
+	const cmd = bot.getCommand(command); // works with the name and aliases as well
 	if (!cmd) return;
 
 	cmd.run({ msg, args });
