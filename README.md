@@ -8,6 +8,8 @@
 </div>
 
 ## Table of Contents
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FLuvella%2FFirework.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FLuvella%2FFirework?ref=badge_shield)
+
 - [Install](#install)
 - [Example](#example)
 - [Links](#links)
@@ -56,3 +58,6 @@ bot.on('messageCreate', (msg) => {
 ### License
 Firework is licensed under the MIT license.  
 [Read here](LICENSE) for more info.
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FLuvella%2FFirework.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FLuvella%2FFirework?ref=badge_large)
