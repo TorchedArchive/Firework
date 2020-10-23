@@ -2,7 +2,7 @@ const Firework = require('../../lib');
 
 class MessageCreateEvent extends Firework.Event {
 	constructor(bot) {
-		super(bot, {name: 'messageCreate'})
+		super(bot, {name: 'messageCreate'});
 	}
 
 	run(msg) {
@@ -14,7 +14,7 @@ class MessageCreateEvent extends Firework.Event {
 		const command = args.shift().toLowerCase();		
 
 		try {
-			const cmd = bot.getCommand(msg.content) // works with the name and aliases as well
+			const cmd = this.bot.getCommand(msg.content); // works with the name and aliases as well
 			if (!cmd) return;
 
 			cmd.run({ msg, args });
