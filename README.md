@@ -1,6 +1,7 @@
 <div align="center">
 	<h2>Firework</h2>
 	<blockquote align="center">🎆 Command framework and utilities for the Eris Discord library.</blockquote>
+	<img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FLuvella%2FFirework.svg?type=shield" href="https://app.fossa.com/projects/git%2Bgithub.com%2FLuvella%2FFirework?ref=badge_shield">
 	<p>
     	Firework is a simple, easy to use command framework for <a href="https://abal.moe/Eris/">Eris</a>. It mostly only helps you with loading, managing, etc. and leaves running the command and anything else to the user (you). 
     	<hr>
@@ -8,8 +9,6 @@
 </div>
 
 ## Table of Contents
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FLuvella%2FFirework.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FLuvella%2FFirework?ref=badge_shield)
-
 - [Install](#install)
 - [Example](#example)
 - [Links](#links)
